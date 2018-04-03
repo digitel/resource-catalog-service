@@ -3,6 +3,11 @@ package org.tmf.openapi.resource.service;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.tmf.openapi.resource.common.ListUtils.toList;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -99,6 +104,10 @@ public class ResourceCatalogService {
 		if (null!= resourceCatalog.getCategory()) {
 			existingCatalog.setCategory(resourceCatalog.getCategory());
 		}
+		
+		
+		existingCatalog.setLastUpdate(LocalTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")));
+		
 
 		return catalogRepository.save(existingCatalog);
 
@@ -120,7 +129,7 @@ public class ResourceCatalogService {
 		}
 		
 		if (null == resourceCatalog.getBaseType() || resourceCatalog.getBaseType().trim().equals("")) {
-			resourceCatalog.setType("Catalog");
+			resourceCatalog.setBaseType("Catalog");
 		}
 		
 		if (null == resourceCatalog.getVersion() || resourceCatalog.getVersion().trim().equals("")) {
@@ -132,10 +141,17 @@ public class ResourceCatalogService {
 		}
 		
 		if (null == resourceCatalog.getSchemaLocation()|| resourceCatalog.getSchemaLocation().trim().equals("")) {
-			resourceCatalog.setSchemaLocation(linkTo(ResourceCatalogService.class).slash("/catalogManagement/schema").slash("resourceCatalog").toUri().toString());
-			
-			
+			resourceCatalog.setSchemaLocation(linkTo(ResourceCatalogService.class).slash("/catalogManagement/").slash("resourceCatalog").toUri().toString());			
 		}
+		
+		if (null== resourceCatalog.getLastUpdate() || resourceCatalog.getLastUpdate().trim().equals("")) {
+			
+			resourceCatalog.setLastUpdate(LocalTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")));
+		}
+		
+		
 	}
+
+	
 
 }

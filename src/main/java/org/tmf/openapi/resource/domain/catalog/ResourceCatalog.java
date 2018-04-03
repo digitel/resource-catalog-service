@@ -45,16 +45,13 @@ public class ResourceCatalog {
 
 	private String description;
 
-	@JsonProperty("@type")
-	
+	@JsonProperty("@type")	
 	private String type;
-
-	@JsonProperty("@baseType")
 	
+	@JsonProperty("@baseType")	
 	private String baseType;
-
-	@JsonProperty("@schemaLocation")
 	
+	@JsonProperty("@schemaLocation")	
 	private String schemaLocation;
 
 	private String lastUpdate;
