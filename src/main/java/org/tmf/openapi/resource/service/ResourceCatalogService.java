@@ -137,11 +137,11 @@ public class ResourceCatalogService {
 		}
 		
 		if (null == resourceCatalog.getLifecycleStatus() || resourceCatalog.getLifecycleStatus().trim().equals("")) {
-			resourceCatalog.setLifecycleStatus("In Design");;
+			resourceCatalog.setLifecycleStatus("In Design");
 		}
 		
 		if (null == resourceCatalog.getSchemaLocation()|| resourceCatalog.getSchemaLocation().trim().equals("")) {
-			resourceCatalog.setSchemaLocation(linkTo(ResourceCatalogService.class).slash("/catalogManagement/").slash("resourceCatalog").toUri().toString());			
+			resourceCatalog.setSchemaLocation(linkTo(ResourceCatalogService.class).slash("/catalogManagement/resourceCatalog").toUri().toString());			
 		}
 		
 		if (null== resourceCatalog.getLastUpdate() || resourceCatalog.getLastUpdate().trim().equals("")) {
