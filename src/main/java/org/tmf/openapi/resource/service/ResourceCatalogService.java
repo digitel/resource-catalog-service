@@ -106,7 +106,9 @@ public class ResourceCatalogService {
 		}
 		
 		
-		existingCatalog.setLastUpdate(LocalTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")));
+		//existingCatalog.setLastUpdate(LocalTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")));
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");	
+        existingCatalog.setLastUpdate(df.format(new Date()));
 		
 
 		return catalogRepository.save(existingCatalog);
@@ -146,7 +148,9 @@ public class ResourceCatalogService {
 		
 		if (null== resourceCatalog.getLastUpdate() || resourceCatalog.getLastUpdate().trim().equals("")) {
 			
-			resourceCatalog.setLastUpdate(LocalTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")));
+			//resourceCatalog.setLastUpdate(LocalTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")));
+			SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");		
+			resourceCatalog.setLastUpdate(df.format(new Date()));
 		}
 		
 		
