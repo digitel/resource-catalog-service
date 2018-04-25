@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.ToString;
 
-@ValidTimePeriod
+//@ValidTimePeriod
 
 @Data
 @ToString(includeFieldNames = true)

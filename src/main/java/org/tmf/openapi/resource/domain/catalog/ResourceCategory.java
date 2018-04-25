@@ -56,7 +56,7 @@ public class ResourceCategory {
 	
 	private String version;
 	
-	@Valid
+	//@Valid
 	private TimePeriod validFor;
 	
 	private String lastUpdate;
